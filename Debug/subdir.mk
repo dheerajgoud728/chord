@@ -3,21 +3,18 @@
 ################################################################################
 
 # Add inputs and outputs from these tool invocations to the build variables 
-C_SRCS += \
-../main.c 
+CPP_SRCS += \
+../main.cpp 
 
-OBJS += \
-./main.o 
-
-C_DEPS += \
+CPP_DEPS += \
 ./main.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes
-%.o: ../%.c
+main: ../main.cpp
 	@echo 'Building file: $<'
 	@echo 'Invoking: GCC C Compiler'
-	gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	gcc -O0 -g3 -Wall -c -fmessage-length=0 -lglut -lGLU -MMD -MP -MF"$(@:%.o=%.d)" -MT"main.d" -o"$@" "$<"
 	@echo 'Finished building: $<'
 	@echo ' '
 
