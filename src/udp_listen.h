@@ -8,6 +8,11 @@
 #ifndef UDP_LISTEN_H_
 #define UDP_LISTEN_H_
 
+#define MYPORT "4950"
+#define MAX_PENDING 5
+#define MAX_LINE 256
+#define MAXBUFLEN 100
+
 void* listen(void* dummy);
 
 void call_listen(){
@@ -15,7 +20,10 @@ void call_listen(){
 	   int l_ret;
 	   int dummy = 0;
 	   l_ret = pthread_create(&l_thread, NULL, listen, (void *)dummy);
-	   number++;
+}
+
+void UDP_message(string from_ip, string message){
+	cout<<from_ip<<"\t"<<message<<endl;
 }
 
 void* listen(void* dummy){
@@ -75,8 +83,7 @@ void* listen(void* dummy){
 	printf("listener: packet is %d bytes long\n", numbytes);
 	buf[numbytes] = '\0';
 	printf("listener: packet contains \"%s\"\n", buf);
-	cout<<s;
-	cout<<"\t"<<number<<endl;
+	cout<<s<<endl;
 end:
 	close(sockfd);
     call_listen();

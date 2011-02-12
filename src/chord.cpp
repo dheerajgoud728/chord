@@ -10,11 +10,6 @@
 #include "defs.h"
 #include "udp_listen.h"
 
-#define MYPORT "4950"
-#define MAX_PENDING 5
-#define MAX_LINE 256
-#define MAXBUFLEN 100
-
 vector<pthread_t> threads;
 vector<int> rets;
 
@@ -38,8 +33,4 @@ int main(int argc, char ** argv)
 	   ret = pthread_create(&tmp_t, NULL, (void*)&f_1);*/
    }
    return 0;
-}
-
-void UDP_message(string from_ip, string message){
-	cout<<from_ip<<"\t"<<message<<endl;
 }
